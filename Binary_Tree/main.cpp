@@ -35,16 +35,36 @@ bool binary_tree::is_empty(){
 	return false;
 }
 
-void binary_tree::add_node(int val) {
 
+
+
+void binary_tree::add_node(int val) {
+	tree_node *tmp_node = new tree_node();
+	if(this->is_empty()) {
+		this->root->data = val;
+	}
+	else {
+		if(this->root->data > val)
+		{
+			//go right
+			tmp_node->data = val;
+			tmp_node->right = root->right;
+			while(tmp_node->right != NULL){
+				tmp_node = tmp_node->right;
+			}
+
+		}
+	}
 }
 
 int main() {
 	int value;
 	binary_tree my_tree;
+	my_tree.add_node(20);
 	if (my_tree.is_empty()) {
-		
+		cout << "TREE IS EMPTY." << endl;
 	}
+	
 	cin >> value;
 
 	return 0;
